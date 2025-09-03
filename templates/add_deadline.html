@@ -1,7 +1,13 @@
-<h2>Add Deadline</h2>
-<form method="post">
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-3">Add Deadline</h2>
+
+<form method="post" class="card p-3 shadow-sm">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Save</button>
+  <button type="submit" class="btn btn-success">💾 Save</button>
 </form>
-<a href="{% url 'deadline_list' %}">Back to Deadlines</a>
+
+<a href="{% url 'deadline_list' %}" class="btn btn-link mt-2">⬅ Back to Deadlines</a>
+{% endblock %}
