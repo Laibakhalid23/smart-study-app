@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="card shadow-sm">
-  <div class="card-body">
-    <h1 class="h4 mb-2">Welcome!</h1>
-    <p class="text-muted mb-0">Your personalized study planner is coming soon. Next: add Subjects and Deadlines.</p>
+  <div class="text-center">
+    <h1 class="mb-4">Welcome to 📚 Smart Study Buddy</h1>
+    <p class="lead">Your personal assistant for smart learning and time management.</p>
+    <hr class="my-4">
+    <div class="d-flex justify-content-center gap-3">
+      <a href="{% url 'subject_list' %}" class="btn btn-primary">Manage Subjects</a>
+      <a href="{% url 'deadline_list' %}" class="btn btn-warning">View Deadlines</a>
+      <a href="{% url 'study_session_list' %}" class="btn btn-success">Study Sessions</a>
+    </div>
   </div>
-</div>
 {% endblock %}
