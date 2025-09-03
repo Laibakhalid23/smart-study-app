@@ -16,3 +16,4 @@ class StudySessionForm(forms.ModelForm):
     class Meta:
         model = StudySession
         fields = ["subject", "duration", "date"]
+        widgets = {"date": forms.DateInput(attrs={'type': 'date'})}

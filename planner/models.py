@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Subject(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -20,7 +21,7 @@ class Deadline(models.Model):
 class StudySession(models.Model):
         subject=models.ForeignKey(Subject,on_delete=models.CASCADE)
         duration=models.PositiveIntegerField(help_text="minutes")
-        date=models.DateField(auto_now_add=True)
+        date=models.DateField(default=timezone.now)
 
         def __str__(self):
               return f"{self.subject.name} {self.duration} min on {self.date}"
