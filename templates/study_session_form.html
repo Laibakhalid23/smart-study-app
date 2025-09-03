@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-3">Add Study Session</h2>
+
+<form method="post" class="card p-3 shadow-sm">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">💾 Save</button>
+</form>
+
+<a href="{% url 'study_session_list' %}" class="btn btn-link mt-2">⬅ Back to Study Sessions</a>
+{% endblock %}

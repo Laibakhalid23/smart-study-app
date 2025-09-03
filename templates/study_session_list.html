@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-3">Study Sessions</h2>
+<a href="{% url 'study_session_create' %}" class="btn btn-primary mb-3">➕ Add New Session</a>
+
+<ul class="list-group">
+    {% for session in sessions %}
+        <li class="list-group-item">
+            <strong>{{ session.subject.name }}</strong> — 
+            {{ session.duration }} min on {{ session.date }}
+        </li>
+    {% empty %}
+        <li class="list-group-item text-muted">No study sessions yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

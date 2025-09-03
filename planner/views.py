@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Subject,Deadline
-from .forms import SubjectForm, DeadlineForm
+from .models import Subject,Deadline, StudySession
+from .forms import SubjectForm, DeadlineForm, StudySessionForm
 def subject_list(request):
     user=request.user
     subjects=Subject.objects.filter(user=user) if user.is_authenticated else []
@@ -32,4 +32,16 @@ def add_deadline(request):
         form = DeadlineForm()
     return render(request, "add_deadline.html", {"form": form})
 
+def study_session_list(request):
+    sessions=StudySession.objects.all()
+    return render(request,"study_session_list.html",{"sessions":sessions})
 
+def study_session_create(request):
+    if request.method == "POST":
+        form = StudySessionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("study_session_list")
+    else:
+        form = StudySessionForm()
+    return render(request, "study_session_form.html", {"form": form})

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import render
-from planner.views import subject_list,deadline_list,add_deadline
+from planner.views import subject_list,deadline_list,add_deadline,study_session_list, study_session_create
 
 
 def home(request):
@@ -29,5 +29,7 @@ urlpatterns = [
     path("subjects/", subject_list, name="subject_list"),
     path("deadlines/", deadline_list, name="deadline_list"),
     path("deadlines/add/", add_deadline, name="add_deadline"),
+    path("sessions/", study_session_list, name="study_session_list"),
+    path("sessions/add/", study_session_create, name="study_session_create"),
 ]
 
